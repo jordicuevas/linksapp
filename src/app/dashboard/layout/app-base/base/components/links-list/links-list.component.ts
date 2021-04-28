@@ -1,5 +1,7 @@
 import { LinkMessages } from './../../../../../../core/messages/en.links.message';
 import { Component, OnInit, Input } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-links-list',
   templateUrl: './links-list.component.html',
@@ -8,7 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class LinksListComponent implements OnInit {
   @Input() links: Array<any> | undefined;
 
-  constructor() {}
+  constructor(private toastr: ToastrService) {}
   linkmsg = LinkMessages;
   ngOnInit(): void {}
 
@@ -17,7 +19,6 @@ export class LinksListComponent implements OnInit {
       this.links?.findIndex((element) => element.url === item.url),
       1
     );
-
-    console.log(this.links);
+    this.toastr.success(this.linkmsg.linkremoved);
   }
 }

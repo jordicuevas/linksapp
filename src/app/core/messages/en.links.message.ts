@@ -7,4 +7,6 @@ export const LinkMessages = {
   formAddButton: 'ADD',
   urlPathErrorPatter: 'Input a valid URL, it should start with https://',
   noLinksFound: 'No Links found at this time!, go ahead and add one',
+  linkremoved: 'The link has been removed!',
+  linkadd: 'The link has been added to your favorites!',
 };

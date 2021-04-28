@@ -8,6 +8,7 @@ import {
   FormGroup,
 } from '@angular/forms';
 import { LinkMessages } from '../../../../../../core/messages/en.links.message';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-links',
@@ -20,7 +21,7 @@ export class LinksComponent implements OnInit {
   formMessages = LinkMessages;
   linksArray: Array<any> = [];
 
-  constructor(private _fb: FormBuilder) {
+  constructor(private _fb: FormBuilder, private toastr: ToastrService) {
     const urlRegex = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
 
     this.urlForm = this._fb.group({
@@ -36,6 +37,8 @@ export class LinksComponent implements OnInit {
         url: this.urlForm.get('urlPath')?.value,
         name: this.urlForm.get('urlName')?.value,
       });
+      this.toastr.success(this.formMessages.linkadd);
+      this.urlForm.reset();
     }
   }
 }
