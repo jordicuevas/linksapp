@@ -1,0 +1,35 @@
+.input-full-width {
+  width: 100%;
+}
+
+.add-url__button {
+  width: 150px !important;
+}
+
+.form-card {
+  height: 100% !important;
+}
+
+.link-list__card {
+  margin: 10px !important;
+}
+
+.link-delete__iconrow {
+  align-items: flex-end !important;
+}
+
+.link-delete__icon {
+  cursor: pointer;
+}
+
+.not-found__card {
+  background-color: red !important;
+  color: white;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.url-text {
+  color: #0f8df3 !important;
+  text-decoration: none;
+}

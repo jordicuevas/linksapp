@@ -1,0 +1,28 @@
+<mat-card class="form-card">
+  <h1>{{ formMessages.formName }}</h1>
+  <form [formGroup]="urlForm">
+    <mat-form-field class="input-full-width" appearance="outline">
+      <mat-label>{{ formMessages.urlPathLabel }}</mat-label>
+      <input type="text" matInput formControlName="urlPath" placeholder="Ex. https://" />
+      <mat-error *ngIf="urlForm.controls['urlPath'].errors?.required">
+        {{ formMessages.urlPathError }}
+      </mat-error>
+      <mat-error *ngIf="urlForm.controls['urlPath'].hasError('pattern')">
+        {{ formMessages.urlPathErrorPatter }}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="input-full-width" appearance="outline">
+      <mat-label>{{ formMessages.urlNameLabel }}</mat-label>
+      <input type="text" matInput formControlName="urlName" placeholder="" />
+      <mat-error *ngIf="urlForm.controls['urlName'].errors?.required">
+        {{ formMessages.urlPathError }}
+      </mat-error>
+    </mat-form-field>
+    <div fxLayout="row" fxLayoutAlign="end center">
+      <button (click)="addItem()" [disabled]="!urlForm.valid" class="add-url__button" mat-raised-button color="primary">
+        {{ formMessages.formAddButton }}
+      </button>
+    </div>
+  </form>
+  <app-links-list [links]="linksArray"></app-links-list>
+</mat-card>

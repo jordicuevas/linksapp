@@ -1,0 +1,49 @@
+<div fxLayout="row" fxLayoutAlign="end center">
+  <button mat-button aria-label="Logout button" class="logout__button" (click)="signup()">
+    <span class="logout-button__text">{{ loginMessages.signUpButtonText}}</span>
+  </button>
+</div>
+
+
+<div fxLayout="column" fxLayoutAlign="center center">
+  <div fxLayout="row">
+    <app-logo></app-logo>
+  </div>
+  <mat-card class="form-card">
+    <h1>{{ loginMessages.formName }}</h1>
+    <form [formGroup]="loginForm">
+      <mat-form-field class="input-full-width" appearance="outline">
+        <mat-label>{{ loginMessages.usernameLabel}}</mat-label>
+        <input type="text" matInput formControlName="username" placeholder="" />
+        <mat-error *ngIf="loginForm.controls['username'].errors?.required">
+          {{ loginMessages.usernameError }}
+        </mat-error>
+
+      </mat-form-field>
+      <mat-form-field class="input-full-width" appearance="outline">
+        <mat-label>{{ loginMessages.passwordLabel }}</mat-label>
+        <input type="password" matInput formControlName="password" placeholder="" />
+        <mat-error *ngIf="loginForm.controls['password'].errors?.required">
+          {{ loginMessages.passwordError}}
+        </mat-error>
+      </mat-form-field>
+      <div fxLayout="row" fxLayoutAlign="end center">
+
+
+        <button (click)="login()" [disabled]="!loginForm.valid || loading" class="add-url__button" mat-raised-button
+          color="primary">
+          <ng-container *ngIf="!loading; else loadingTemplate">
+            {{ loginMessages.loginButton }}
+          </ng-container>
+          <ng-template #loadingTemplate>
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <mat-spinner diameter="25" color="warn"></mat-spinner>
+            </div>
+          </ng-template>
+
+        </button>
+      </div>
+    </form>
+  </mat-card>
+
+</div>

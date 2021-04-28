@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  imageSrc: './assets/',
+  api: 'https://6088b5b3a6f4a30017426c32.mockapi.io/',
 };
 
 /*

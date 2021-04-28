@@ -1,0 +1,47 @@
+<div fxLayout="row" fxLayoutAlign="end center">
+  <button mat-button aria-label="Logout button" class="logout__button" (click)="login()">
+    <span class="logout-button__text">{{ signupMessages.loginButtonText}}</span>
+  </button>
+</div>
+
+
+<div fxLayout="column" fxLayoutAlign="center center">
+  <div fxLayout="row">
+    <app-logo></app-logo>
+  </div>
+  <mat-card class="form-card">
+    <h1>{{ signupMessages.formName }}</h1>
+    <form [formGroup]="signupForm">
+      <mat-form-field class="input-full-width" appearance="outline">
+        <mat-label>{{ signupMessages.fullNameLabel}}</mat-label>
+        <input type="text" matInput formControlName="fullname" placeholder="Ex. John Doe" />
+        <mat-error *ngIf="signupForm.controls['fullname'].errors?.required">
+          {{ signupMessages.fullnameError }}
+        </mat-error>
+
+      </mat-form-field>
+      <mat-form-field class="input-full-width" appearance="outline">
+        <mat-label>{{ signupMessages.emailLabel}}</mat-label>
+        <input type="text" matInput formControlName="email" placeholder="Ex. johndoe@example.com" />
+        <mat-error *ngIf="signupForm.controls['email'].errors?.required">
+          {{ signupMessages.emailError }}
+        </mat-error>
+
+      </mat-form-field>
+      <mat-form-field class="input-full-width" appearance="outline">
+        <mat-label>{{ signupMessages.passwordLabel }}</mat-label>
+        <input type="password" matInput formControlName="password" placeholder="" />
+        <mat-error *ngIf="signupForm.controls['password'].errors?.required">
+          {{ signupMessages.passwordError}}
+        </mat-error>
+      </mat-form-field>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <button (click)="signup()" [disabled]="!signupForm.valid" class="add-url__button" mat-raised-button
+          color="primary">
+          {{ signupMessages.signupButton }}
+        </button>
+      </div>
+    </form>
+  </mat-card>
+
+</div>

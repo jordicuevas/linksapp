@@ -1,0 +1,11 @@
+@import "./theme-colors";
+
+.logout__button {
+  border: 2px solid $logOutButton !important;
+  padding: 10px;
+  width: 150px;
+}
+.logout-button__text {
+  font-weight: bold;
+  color: $logOutButton !important;
+}

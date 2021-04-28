@@ -1,0 +1,22 @@
+<ng-container *ngIf="links?.length !==0  ; else notLinksFound ">
+  <mat-card class="link-list__card" *ngFor="let item of links">
+    <div fxLayout="row" fxLayoutAlign="  center">
+      <div fxLayout="column" fxFlex="50%">
+        <h1><a class="url-text" [href]="item.url">{{item.url}}</a> </h1>
+      </div>
+      <div class="link-delete__iconrow" fxLayout="column" fxFlex="50%" fxLayoutAlign="end">
+        <mat-icon class="link-delete__icon" color="warn" matTooltip="Delete" (click)="removeItem(item)">delete
+        </mat-icon>
+      </div>
+    </div>
+    <div fxLayout="row">
+      {{item.name}}
+    </div>
+  </mat-card>
+
+</ng-container>
+<ng-template #notLinksFound>
+  <mat-card class="not-found__card">
+    {{linkmsg.noLinksFound}}
+  </mat-card>
+</ng-template>
